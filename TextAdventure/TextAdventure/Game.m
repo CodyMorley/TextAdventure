@@ -8,7 +8,7 @@
 #import "Game.h"
 
 @implementation Game
-@synthesize name;
+@synthesize name, playerIsAlive, health, ans;
 
 - (void) instructions
 {
@@ -20,6 +20,40 @@
                               encoding:NSASCIIStringEncoding];
     NSLog(@"Your name is: %@. Press ENTER to continue.", name);
     waitOnCR();
+}
+- (void) dayOne
+{
+    playerIsAlive = true;
+    while (playerIsAlive) {
+        // 2 - Scenario1
+        // 3 - Answer1
+        // 4 - Scenario2
+        // 5 - Answer2
+        // 6 - Day Completion Message
+
+    }
+}
+- (void) dayTwo
+{
+    while (playerIsAlive) {
+        // 2 - Scenario1
+        // 3 - Answer1
+        // 4 - Scenario2
+        // 5 - Answer2
+        // 6 - Day Completion Message
+
+    }
+}
+- (void) dayThree
+{
+    while (playerIsAlive) {
+        // 2 - Scenario1
+        // 3 - Answer1
+        // 4 - Scenario2
+        // 5 - Answer2
+        // 6 - Day Completion Message
+
+    }
 }
 
 

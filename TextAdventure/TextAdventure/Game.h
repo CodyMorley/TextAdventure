@@ -14,11 +14,20 @@ void waitOnCR(void);
 @interface Game: NSObject
 {
     NSString* name;
+    BOOL playerIsAlive;
+    int health;
+    int ans;
 }
 
 @property (strong) NSString* name;
+@property BOOL playerIsAlive;
+@property int health;
+@property int ans;
 
 - (void) instructions;
+- (void) dayOne;
+- (void) dayTwo;
+- (void) dayThree;
 
 @end
 
