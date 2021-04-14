@@ -9,13 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Game : NSObject {
+void waitOnCR(void);
+
+@interface Game: NSObject
+{
     NSString* name;
 }
 
-- (void) instructions;
+@property (strong) NSString* name;
 
-- (void) waitOnCR; 
+- (void) instructions;
 
 @end
 
