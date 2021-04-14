@@ -8,7 +8,9 @@
 #import "Game.h"
 
 @implementation Game
+
 @synthesize name, playerIsAlive, health, ans;
+
 
 - (void) instructions
 {
@@ -21,6 +23,7 @@
     NSLog(@"Your name is: %@. Press ENTER to continue.", name);
     waitOnCR();
 }
+
 - (void) dayOne
 {
     playerIsAlive = true;
@@ -34,7 +37,7 @@
             NSLog(@"\n\nYou feel well rested. However, you are hungry and freezing without shelter. It is too dark to build a shelter. You try to sleep in a tree, but you are attacked by monkeys.\nPress enter to continue.");
             waitOnCR();
             health = 0;
-            NSLog(@"You have died at the hands of the monkeys.");
+            NSLog(@"\nThe vicious screeches of the monkeys are the last thing you hear.");
             playerIsAlive = false;
             break;
         }
@@ -60,22 +63,86 @@
         break;
     }
 }
+
 - (void) dayTwo
 {
     while (playerIsAlive) {
-        // 2 - Scenario1
-        // 3 - Answer1
-        // 4 - Scenario2
-        // 5 - Answer2
-        // 6 - Day Completion Message
-
+        
+        NSLog(@"\n\nDAY:02\n\nUpon being nudged by a large animal, you awake.\nIt's a huge silverback gorilla!!\n1.Run.\n2.Embrace your fate, and climb into its mouth.");
+        scanf("%i", &ans);
+        waitOnCR();
+        if (ans == 1) {
+            NSLog(@"\n\nThe gorilla watches you run in amusement. It trails behind you, until you drop from exhaustion.\nHe takes a bite out of your scrawny arm.\nPress enter to continue.");
+            waitOnCR();
+            NSLog(@"\n\nOUCH!\nThe gorilla shakes its head in disapproval and proceeds to spit out the remaining flesh. The gorilla runs back into the jungle.\nYour gaping wound results in a significant health decrease.\nPress enter to continue.");
+            waitOnCR();
+            health = health - 60;
+            NSLog(@"\nHealth decreased.");
+        } else {
+            NSLog(@"\n\nBy peacefully approaching the gorilla, it does not feel threatened. It takes you on its back to explore the island.\nPress enter to continue.");
+            waitOnCR();
+            NSLog(@"\n\nAs you pass through the jungle, you see that snakes inhabit the taller trees.You pass through a grand meadow of grass.\nThe ape slows, as you look to the east coast of the island, you make out a tribe of warriors. The ape turns and brings you back to where he found you.\nYou take a mental note of what you saw.\nPress enter to continue.");
+            waitOnCR();
+        }
+        
+        NSLog(@"\n\nYou feel slightly chilled. You know the night will be really cold if you don't build a fire and retrieve wood.\n1.Search the beach.\n2.Search the jungle.");
+        scanf("%i", &ans);
+        waitOnCR();
+        
+        if (ans == 1) {
+                while (ans == 1) {
+                    NSLog(@"\n\nYou feel the warm sand under your feet.\n1.Search the west coast.\n2.Search the southern coast.");
+                    scanf("%i", &ans);
+                    if (ans == 1) {
+                        NSLog(@"\n\nYou walk for a mile, and come upon some sun dried timber. You create a tee-pee structure out of the wood.\nYou manage to make the kindle catch fire by scratching rocks together.\nPress enter to continue.");
+                        waitOnCR();
+                        break;
+                    }
+                    if (ans == 2) {
+                        NSLog(@"\n\nYou walk in circles for another mile, this part of the beach does not have timber.\nPress enter to continue.");
+                        ans = 1;
+                        waitOnCR();
+                    }
+                }
+        } else {
+            NSLog(@"\n\nYou find plenty of wood, and drag it on to the beach for your fire.\nPress enter to continue.");
+            waitOnCR();
+            NSLog(@"\n\nAs night falls you have failed to light your fire, the wood from the jungle is too moist and rotten.\nYou find shelter under another tree, but you are exceptionally cold and weak.\nPress enter to continue.");
+            health = health - 10;
+            NSLog(@"Health decreased.");
+            waitOnCR();
+        }
+        
+        NSLog(@"\n\nYou fall asleep. Day:02 was successfully completed.\nPress enter to continue.");
+        waitOnCR();
+        break;
     }
 }
+
 - (void) dayThree
 {
     while (playerIsAlive) {
-        // 2 - Scenario1
+        BOOL ateGranola;
+        
+        NSLog(@"\n\nDay:03\n\nThe sun bears down on your face and the sound of seagulls wake you. As you attempt to stand up, you are reminded of your ravaging hunger.\nPress enter to continue.");
+        waitOnCR();
+        NSLog(@"\n\nTo your surprise, you discover a granola bar, you stashed in the lower pocket of your cargo pants before your flight.\n1.Eat it.\n2.Save it for later.");
+        scanf("%i", &ans);
+        waitOnCR();
         // 3 - Answer1
+        if (ans == 1) {
+            ateGranola = true;
+            NSLog(@"\n\nThe granola bar effectively curbs your hunger.\nPress enter to continue.");
+            health = health + 10;
+            NSLog(@"Health increased.");
+            waitOnCR();
+        } else {
+            ateGranola = false;
+            NSLog(@"\n\nPerhaps you will find a greater use for the bar later.\nPress enter to continue.");
+            waitOnCR();
+        }
+        
+        
         // 4 - Scenario2
         // 5 - Answer2
         // 6 - Day Completion Message
