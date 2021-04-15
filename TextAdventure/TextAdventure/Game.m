@@ -17,7 +17,6 @@
     NSLog(@"\n\nYour plane crashed on an island. Help is coming in three days. Try and survive.\nType in your first name and press ENTER to continue.");
     char firstName[20];
     scanf("%s", &firstName);
-    
     name = [NSString stringWithCString:firstName
                               encoding:NSASCIIStringEncoding];
     NSLog(@"Your name is: %@. Press ENTER to continue.", name);
@@ -90,20 +89,20 @@
         waitOnCR();
         
         if (ans == 1) {
-                while (ans == 1) {
-                    NSLog(@"\n\nYou feel the warm sand under your feet.\n1.Search the west coast.\n2.Search the southern coast.");
-                    scanf("%i", &ans);
-                    if (ans == 1) {
-                        NSLog(@"\n\nYou walk for a mile, and come upon some sun dried timber. You create a tee-pee structure out of the wood.\nYou manage to make the kindle catch fire by scratching rocks together.\nPress ENTER to continue.");
-                        waitOnCR();
-                        break;
-                    }
-                    if (ans == 2) {
-                        NSLog(@"\n\nYou walk in circles for another mile, this part of the beach does not have timber.\nPress ENTER to continue.");
-                        ans = 1;
-                        waitOnCR();
-                    }
+            while (ans == 1) {
+                NSLog(@"\n\nYou feel the warm sand under your feet.\n1.Search the west coast.\n2.Search the southern coast.");
+                scanf("%i", &ans);
+                if (ans == 1) {
+                    NSLog(@"\n\nYou walk for a mile, and come upon some sun dried timber. You create a tee-pee structure out of the wood.\nYou manage to make the kindle catch fire by scratching rocks together.\nPress ENTER to continue.");
+                    waitOnCR();
+                    break;
                 }
+                if (ans == 2) {
+                    NSLog(@"\n\nYou walk in circles for another mile, this part of the beach does not have timber.\nPress ENTER to continue.");
+                    ans = 1;
+                    waitOnCR();
+                }
+            }
         } else {
             NSLog(@"\n\nYou find plenty of wood, and drag it on to the beach for your fire.\nPress ENTER to continue.");
             waitOnCR();
@@ -142,13 +141,60 @@
             waitOnCR();
         }
         
-        
-        // 4 - Scenario2
-        // 5 - Answer2
-        // 6 - Day Completion Message
+        NSLog(@"\n\nYou recall that today is the day the dispatchers promised a rescue. You need an aerial view of the island, to see where the rescue team will come.\n1.Climb a tall tree.\n2.Climb a rock face.");
+        scanf("%i", &ans);
+        waitOnCR();
 
+        if (ans == 1) {
+            NSLog(@"\n\nYou climb to the top of a mossed over tree. The view is great and you can see a meadow that would be ideal for a helicopter landing.\nHowever, you also see a perfect area for a boat rescue on the east coast.\nAs you take in the view, you feel a jab and a following stinging sensation.\nYou have been bit by a snake.\nPress ENTER to continue.");
+            waitOnCR();
+            NSLog(@"\n\nAfter you climb down the tree, you faint at its base.");
+            waitOnCR();
+            health = health - 50;
+            NSLog(@"\nHealth is decreased significantly.");
+            if (health <= 0) {
+                playerIsAlive = false;
+                break;
+            }
+        } else {
+            NSLog(@"\n\nYou climb to the top of a rock face. The view is great and you can see a meadow that would be ideal for a helicopter landing.\nHowever, you also see a perfect area for a boat rescue on the east coast.\nPress ENTER to continue.");
+        }
+        
+        NSLog(@"\n\nYou decide to walk to the east coast as it seems to be the most likely rescue point.\nPress ENTER to continue.");
+        waitOnCR();
+        
+        NSLog(@"\n\nAs you walk through the jungle, you trip over a net. You are instantly flung upside down.\nPress ENTER to continue.");
+        waitOnCR();
+        
+        NSLog(@"\n\nAs you look around, all you can make out are dark forms with bright painted faces. You are surrounded by natives.\nPress ENTER to continue.");
+        waitOnCR();
+        
+        NSLog(@"\n\nThey take you to the east beach, and set you next to a grand fire. When they are not looking, you reach into your pockets for something useful.\nPress ENTER to continue.");
+        waitOnCR();
+        
+        if (ateGranola == true) {
+            NSLog(@"\n\nYou search to find your granola bar wrapper, but you seem to have left it under a tree. You imagine that the shiny foil wrapper would have deeply impressed the natives.\nThe natives knock you out.");
+            health = 0;
+            break;
+        } else {
+            NSLog(@"\n\nYou pull out your granola bar and draw their attention. They are shocked by the foil wrapper. They think it is a new metal.\nThe chief accepts your invitation to eat the honey granola bar. He is deeply impressed.\nPress ENTER to continue.");
+            waitOnCR();
+            NSLog(@"\n\nIn this same moment, a large steel rescue boat approaches. The natives are terrified and leave you standing on the beach.\nYou are rescued.\nPress ENTER to continue.");
+            waitOnCR();
+            NSLog(@"\n\nYOU WIN\nPress ENTER to continue.");
+            waitOnCR();
+            [self printHealth];
+            break;
+        }
     }
 }
 
+- (void) printHealth
+{
+    if (health > 0) {
+        NSLog(@"\n\n%@ managed to finish the day with a total health of: %i\nPress ENTER to continue.", name, health);
+        waitOnCR();
+    }
+}
 
 @end

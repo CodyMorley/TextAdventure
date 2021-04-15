@@ -28,6 +28,7 @@ void waitOnCR(void);
 - (void) dayOne;
 - (void) dayTwo;
 - (void) dayThree;
+- (void) printHealth;
 
 @end
 
