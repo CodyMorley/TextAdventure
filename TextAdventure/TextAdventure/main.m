@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
             [myGame dayThree];
             
             if (myGame.health <= 0) {
-                NSLog(@"\n\nYou have died.\nPress enter for the next dialogue.");
+                NSLog(@"\n\nYou have died.\nPress ENTER for the next dialogue.");
                 waitOnCR();
             }
             
